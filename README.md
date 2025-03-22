@@ -2,11 +2,12 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* 変数定義 */
         :root {
             --primary: #6366F1;
             --primary-dark: #4F46E5;
@@ -18,25 +19,20 @@
             --light: #F9FAFB;
             --dark: #1F2937;
             --success: #10B981;
-            --gray-50: #F9FAFB;
             --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
             --gray-300: #D1D5DB;
             --gray-400: #9CA3AF;
             --gray-500: #6B7280;
             --gray-600: #4B5563;
             --gray-700: #374151;
             --gray-800: #1F2937;
-            --gray-900: #111827;
             --container-width: 1140px;
-            --section-spacing: 80px;
             --border-radius: 12px;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
+        /* リセットとベース */
         * {
             margin: 0;
             padding: 0;
@@ -45,6 +41,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -53,31 +50,20 @@
             background-color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4 {
             font-weight: 700;
             line-height: 1.3;
             margin-bottom: 1rem;
         }
 
-        h1 {
-            font-size: 2.75rem;
-        }
+        h1 { font-size: clamp(1.75rem, 1.5rem + 2vw, 2.75rem); }
+        h2 { font-size: clamp(1.5rem, 1.25rem + 1.5vw, 2.25rem); }
+        h3 { font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem); }
 
-        h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-        }
+        p { margin-bottom: 1.25rem; }
 
         a {
             text-decoration: none;
@@ -85,9 +71,7 @@
             transition: all 0.3s ease;
         }
 
-        a:hover {
-            color: var(--primary-dark);
-        }
+        a:hover { color: var(--primary-dark); }
 
         img {
             max-width: 100%;
@@ -95,21 +79,21 @@
             display: block;
         }
 
+        /* コンテナ */
         .container {
             width: 100%;
             max-width: var(--container-width);
+            padding: 0 20px;
             margin: 0 auto;
-            padding: 0 24px;
         }
 
-        /* ボタンスタイル改善 */
+        /* ボタン */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 24px;
+            padding: clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) clamp(1rem, 0.75rem + 1vw, 1.5rem);
             font-weight: 600;
-            font-size: 1rem;
             border: none;
             border-radius: var(--border-radius);
             transition: all 0.3s ease;
@@ -117,6 +101,8 @@
         }
 
         .btn svg {
+            width: 1.25em;
+            height: 1.25em;
             margin-right: 8px;
         }
 
@@ -130,6 +116,7 @@
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+            color: white;
         }
 
         .btn-secondary {
@@ -142,32 +129,32 @@
             background-color: var(--secondary-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+            color: white;
         }
 
         .btn-outline {
             background-color: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
-            padding: 12px 22px;
+            padding-top: calc(clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) - 2px);
+            padding-bottom: calc(clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) - 2px);
+            padding-left: calc(clamp(1rem, 0.75rem + 1vw, 1.5rem) - 2px);
+            padding-right: calc(clamp(1rem, 0.75rem + 1vw, 1.5rem) - 2px);
         }
 
         .btn-outline:hover {
             background-color: var(--primary-lighter);
+            color: var(--primary-dark);
             border-color: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         .btn-lg {
-            padding: 16px 32px;
-            font-size: 1.125rem;
+            padding: clamp(0.75rem, 0.6rem + 0.75vw, 1rem) clamp(1.25rem, 1rem + 1.25vw, 2rem);
+            font-size: clamp(0.9375rem, 0.875rem + 0.3125vw, 1.125rem);
         }
 
-        .btn:focus {
-            outline: 3px solid var(--primary-light);
-            outline-offset: 2px;
-        }
-
-        /* ヘッダーとナビゲーション */
+        /* ヘッダーとナビ */
         header {
             position: fixed;
             top: 0;
@@ -176,6 +163,7 @@
             z-index: 1000;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
@@ -187,13 +175,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 0;
+            padding: clamp(12px, 3vw, 20px) 0;
         }
 
         .logo {
-            font-size: 1.75rem;
+            font-size: clamp(1.5rem, 1.25rem + 1.25vw, 1.75rem);
             font-weight: 700;
             color: var(--primary);
+            z-index: 1002;
+            position: relative;
         }
 
         .logo span {
@@ -207,7 +197,7 @@
         }
 
         .nav-links li {
-            margin-left: 32px;
+            margin-left: clamp(16px, 4vw, 32px);
         }
 
         .nav-links a {
@@ -231,6 +221,10 @@
             width: 100%;
         }
 
+        .nav-links a:not(.btn):hover {
+            color: var(--primary);
+        }
+
         .hamburger {
             display: none;
             cursor: pointer;
@@ -247,20 +241,15 @@
             width: 100%;
             background: var(--gray-700);
             border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
             transition: .25s ease-in-out;
         }
 
-        .hamburger span:nth-child(1) {
-            top: 0px;
-        }
-
-        .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
-            top: 10px;
-        }
-
-        .hamburger span:nth-child(4) {
-            top: 20px;
-        }
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2), .hamburger span:nth-child(3) { top: 10px; }
+        .hamburger span:nth-child(4) { top: 20px; }
 
         .hamburger.active span:nth-child(1) {
             top: 10px;
@@ -268,13 +257,8 @@
             left: 50%;
         }
 
-        .hamburger.active span:nth-child(2) {
-            transform: rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
+        .hamburger.active span:nth-child(2) { transform: rotate(45deg); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg); }
 
         .hamburger.active span:nth-child(4) {
             top: 10px;
@@ -282,24 +266,13 @@
             left: 50%;
         }
 
-        /* ヒーローセクション */
+        /* ヒーロー */
         .hero {
-            padding: 160px 0 80px;
+            padding: clamp(120px, 30vw, 180px) 0 clamp(60px, 10vw, 100px);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
             position: relative;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-size: 20px;
-            opacity: 0.1;
         }
 
         .hero-content {
@@ -309,30 +282,24 @@
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
+            font-size: clamp(1rem, 0.875rem + 0.625vw, 1.25rem);
+            margin-bottom: clamp(24px, 8vw, 40px);
             opacity: 0.9;
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 48px;
+            gap: clamp(10px, 3vw, 20px);
+            margin-bottom: clamp(32px, 10vw, 48px);
         }
 
         .hero-image {
             max-width: 900px;
             margin: 0 auto;
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-md);
             overflow: hidden;
         }
 
@@ -350,30 +317,18 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        /* 特徴セクション */
+        /* セクション */
         .section {
-            padding: var(--section-spacing) 0;
+            padding: clamp(40px, 10vw, 80px) 0;
         }
 
-        .section-light {
-            background-color: var(--light);
-        }
-
-        .section-dark {
-            background-color: var(--gray-100);
-        }
-
+        .section-light { background-color: var(--light); }
+        .section-dark { background-color: var(--gray-100); }
         .section-colored {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -382,74 +337,76 @@
         .section-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 48px;
+            margin: 0 auto clamp(32px, 10vw, 48px);
         }
 
-        .features-grid {
+        /* グリッド */
+        .features-grid, .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+            gap: clamp(20px, 5vw, 32px);
         }
 
-        .feature-card {
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: clamp(20px, 5vw, 32px);
+        }
+
+        /* カード */
+        .feature-card, .testimonial-card, .pricing-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 32px;
+            padding: clamp(20px, 5vw, 32px);
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             height: 100%;
+        }
+
+        .feature-card:hover, .testimonial-card:hover, .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card {
             border-bottom: 4px solid transparent;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
             border-bottom: 4px solid var(--primary);
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
             border-radius: 20px;
             background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            font-size: 2rem;
+            margin-bottom: clamp(16px, 4vw, 24px);
+            font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
             color: white;
-            transition: all 0.3s ease;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* 2カラムセクション */
+        /* 2カラム */
         .two-columns {
             display: flex;
             align-items: center;
-            gap: 64px;
+            gap: clamp(32px, 8vw, 64px);
         }
 
-        .column {
-            flex: 1;
-        }
+        .column { flex: 1; }
 
         .image-column img {
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .image-column:hover img {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            width: 100%;
         }
 
         .bullet-list {
             list-style: none;
-            margin-bottom: 32px;
+            margin-bottom: clamp(24px, 8vw, 32px);
         }
 
         .bullet-list li {
@@ -459,10 +416,6 @@
             transition: transform 0.3s ease;
         }
 
-        .bullet-list li:hover {
-            transform: translateX(5px);
-        }
-
         .bullet-list li:before {
             content: '✓';
             position: absolute;
@@ -470,29 +423,16 @@
             top: 2px;
             color: var(--success);
             font-weight: bold;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(16, 185, 129, 0.1);
         }
 
         /* 利用者の声 */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .testimonial-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
         .testimonial-text {
             margin-bottom: 24px;
             font-style: italic;
@@ -522,36 +462,21 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 16px;
+            flex-shrink: 0;
+            border: 3px solid var(--primary-light);
         }
 
-        /* 料金プラン */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
+        /* 料金 */
         .pricing-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
             display: flex;
             flex-direction: column;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
         }
 
         .pricing-card.featured {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-card.featured:before {
@@ -567,23 +492,15 @@
             transform: rotate(45deg);
         }
 
-        .pricing-type {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
         .price {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 2rem + 2.5vw, 3rem);
             font-weight: 700;
             line-height: 1;
             margin-bottom: 16px;
             color: var(--primary);
         }
 
-        .pricing-card.featured .price {
-            color: white;
-        }
+        .pricing-card.featured .price { color: white; }
 
         .pricing-features {
             list-style: none;
@@ -604,24 +521,22 @@
             color: var(--success);
         }
 
-        .pricing-card.featured .pricing-features li:before {
-            color: white;
-        }
+        .pricing-card.featured .pricing-features li:before { color: white; }
 
-        /* CTA セクション */
+        /* CTA */
         .cta {
             text-align: center;
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
+            font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+            margin-bottom: clamp(16px, 4vw, 24px);
         }
 
         .cta p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 0.875rem + 0.625vw, 1.25rem);
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto clamp(24px, 8vw, 40px);
             opacity: 0.9;
         }
 
@@ -629,19 +544,30 @@
         footer {
             background-color: var(--dark);
             color: var(--gray-300);
-            padding: 80px 0 40px;
+            padding: clamp(60px, 15vw, 80px) 0 clamp(30px, 7.5vw, 40px);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 48px;
+            gap: clamp(32px, 8vw, 48px);
         }
 
         .footer-column h3 {
             color: white;
             margin-bottom: 24px;
-            font-size: 1.25rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
         }
 
         .footer-links {
@@ -653,10 +579,6 @@
             transition: all 0.3s ease;
         }
 
-        .footer-links li:hover {
-            transform: translateX(5px);
-        }
-
         .footer-links a {
             color: var(--gray-400);
         }
@@ -666,14 +588,14 @@
         }
 
         .footer-bottom {
-            margin-top: 64px;
-            padding-top: 32px;
+            margin-top: clamp(40px, 10vw, 64px);
+            padding-top: clamp(20px, 5vw, 32px);
             border-top: 1px solid var(--gray-700);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: clamp(16px, 4vw, 24px);
         }
 
         .social-links {
@@ -696,11 +618,6 @@
         .social-link:hover {
             background-color: var(--primary);
             transform: translateY(-5px);
-        }
-
-        .copyright {
-            color: var(--gray-500);
-            font-size: 0.875rem;
         }
 
         /* トップに戻るボタン */
@@ -734,25 +651,23 @@
             transform: translateY(-5px);
         }
 
-        /* レスポンシブスタイル */
+        /* レスポンシブ対応 */
         @media (max-width: 992px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .hero h1 { font-size: 2.5rem; }
-            .two-columns { flex-direction: column; gap: 48px; }
-            .image-column { order: -1; }
+            .two-columns {
+                flex-direction: column;
+                gap: 32px;
+            }
+            
+            .image-column {
+                order: -1;
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
-            :root { --section-spacing: 60px; }
-            h1 { font-size: 2.25rem; }
-            h2 { font-size: 1.75rem; }
-            .hero { padding: 140px 0 60px; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1.125rem; }
-            .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; }
-            .hero-buttons .btn { width: 100%; }
-            .hamburger { display: block; }
+            .hamburger {
+                display: block;
+            }
             
             .nav-links {
                 position: fixed;
@@ -766,28 +681,61 @@
                 justify-content: center;
                 padding: 80px 32px;
                 transition: all 0.4s ease;
-                box-shadow: var(--shadow-lg);
+                box-shadow: var(--shadow-md);
                 z-index: 1001;
             }
             
-            .nav-links.active { right: 0; }
-            .nav-links li { margin: 16px 0; width: 100%; text-align: center; }
-            .nav-links .btn { margin: 16px 0 0; width: 100%; }
-            .footer-bottom { flex-direction: column-reverse; text-align: center; }
-            .social-links { justify-content: center; margin-bottom: 16px; }
-            .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 16px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links .btn {
+                margin: 16px 0 0;
+                width: 100%;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            .footer-bottom {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+                margin-bottom: 16px;
+            }
         }
 
         @media (max-width: 576px) {
-            :root { --section-spacing: 48px; }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            .hero h1 { font-size: 1.75rem; }
-            .feature-card, .testimonial-card, .pricing-card { padding: 24px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .btn { padding: 12px 20px; font-size: 0.95rem; }
-            .btn-lg { padding: 14px 24px; font-size: 1rem; }
-            .back-to-top { right: 20px; bottom: 20px; width: 40px; height: 40px; }
+            .btn {
+                width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-image img {
+                max-height: 250px;
+                object-fit: cover;
+            }
+
+            .back-to-top {
+                right: 20px;
+                bottom: 20px;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -797,7 +745,7 @@
             <nav class="navbar">
                 <a href="#" class="logo">Live<span>Create</span></a>
                 
-                <div class="hamburger" aria-label="メニュー" tabindex="0">
+                <div class="hamburger" aria-label="メニュー" tabindex="0" role="button" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -810,7 +758,7 @@
                     <li><a href="#for-fan">ファン向け</a></li>
                     <li><a href="#pricing">料金</a></li>
                     <li><a href="#" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         登録する
                     </a></li>
                 </ul>
@@ -825,11 +773,11 @@
                 <p>LiveCreateは、クリエイターが安心して創作に打ち込み、ファンが積極的に応援活動を楽しめる新しいクリエイター支援のエコシステムです。双方向の交流で生まれる感情価値や共創体験を提供します。</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-secondary btn-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.88V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9.88a2 2 0 0 0-1.08-1.77l-8-4.5a2 2 0 0 0-1.85 0l-8 4.5A2 2 0 0 0 2 9.88"></path><polyline points="5 12 12 17 19 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.88V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9.88a2 2 0 0 0-1.08-1.77l-8-4.5a2 2 0 0 0-1.85 0l-8 4.5A2 2 0 0 0 2 9.88"></path><polyline points="5 12 12 17 19 12"></polyline></svg>
                         クリエイターとして始める
                     </a>
                     <a href="#" class="btn btn-outline btn-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         ファンとして始める
                     </a>
                 </div>
@@ -839,10 +787,154 @@
             </div>
             <div class="scroll-indicator">
                 <span>スクロールして詳細を見る</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>LiveCreate</h3>
+                    <p>創造の価値を正当に還元し、クリエイターとファンの心をつなぐプラットフォーム</p>
+                </div>
+                <div class="footer-column">
+                    <h3>サービス</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">イベント機能</a></li>
+                        <li><a href="#">サブスクリプション</a></li>
+                        <li><a href="#">グッズ販売</a></li>
+                        <li><a href="#">コミュニティ機能</a></li>
+                        <li><a href="#">分析ツール</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>会社情報</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ミッション</a></li>
+                        <li><a href="#">チーム紹介</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プレスリリース</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>サポート</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ヘルプセンター</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">特定商取引法に基づく表記</a></li>
+                        <li><a href="#">よくある質問</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Twitter">X</a>
+                    <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                    <a href="#" class="social-link" aria-label="Facebook">FB</a>
+                    <a href="#" class="social-link" aria-label="YouTube">YT</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 LiveCreate. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="トップに戻る">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+    <script>
+        // モバイルメニュー
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            
+            // アクセシビリティ対応
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+        });
+        
+        // ナビゲーションリンクをクリックしたらメニューを閉じる
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // スクロール時のヘッダースタイル変更とトップに戻るボタン表示
+        const header = document.querySelector('header');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            // ヘッダースタイル
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // トップに戻るボタン
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // トップに戻るボタン機能
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // レスポンシブ対応：ウィンドウサイズ変更時のメニュー調整
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>
 
     <section id="pricing" class="section section-light">
         <div class="container">
@@ -899,147 +991,11 @@
             <h2>クリエイターとファンの新しい関係を始めよう</h2>
             <p>LiveCreateで、創作の価値が正当に評価され、ファンとの心の繋がりを深める体験をはじめませんか？</p>
             <a href="#" class="btn btn-secondary btn-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                 今すぐ無料登録
             </a>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>LiveCreate</h3>
-                    <p>創造の価値を正当に還元し、クリエイターとファンの心をつなぐプラットフォーム</p>
-                </div>
-                <div class="footer-column">
-                    <h3>サービス</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">イベント機能</a></li>
-                        <li><a href="#">サブスクリプション</a></li>
-                        <li><a href="#">グッズ販売</a></li>
-                        <li><a href="#">コミュニティ機能</a></li>
-                        <li><a href="#">分析ツール</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>会社情報</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">ミッション</a></li>
-                        <li><a href="#">チーム紹介</a></li>
-                        <li><a href="#">採用情報</a></li>
-                        <li><a href="#">プレスリリース</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>サポート</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">ヘルプセンター</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">特定商取引法に基づく表記</a></li>
-                        <li><a href="#">よくある質問</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="social-links">
-                    <a href="#" class="social-link">X</a>
-                    <a href="#" class="social-link">IG</a>
-                    <a href="#" class="social-link">FB</a>
-                    <a href="#" class="social-link">YT</a>
-                </div>
-                <div class="copyright">
-                    &copy; 2025 LiveCreate. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to top button -->
-    <button class="back-to-top" id="backToTop" aria-label="トップに戻る">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </button>
-
-    <script>
-        // モバイルメニュー
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
-            
-            // アクセシビリティ対応
-            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
-            this.setAttribute('aria-expanded', !expanded);
-            this.setAttribute('aria-label', expanded ? 'メニューを開く' : 'メニューを閉じる');
-        });
-        
-        // ナビゲーションリンクをクリックしたらメニューを閉じる
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-                hamburger.setAttribute('aria-expanded', 'false');
-                hamburger.setAttribute('aria-label', 'メニューを開く');
-            });
-        });
-        
-        // スクロール時のヘッダースタイル変更とトップに戻るボタン表示
-        const header = document.querySelector('header');
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            // ヘッダースタイル
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            // トップに戻るボタン
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        // トップに戻るボタン機能
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // スムーススクロール
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
 
     <section id="for-fan" class="section section-light">
         <div class="container">
@@ -1058,7 +1014,7 @@
                         <li>クリエイターへのフィードバックやリクエストが直接届く</li>
                     </ul>
                     <a href="#" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
                         ファンとして登録する
                     </a>
                 </div>
@@ -1174,7 +1130,7 @@
                         <li>収益レポートやファン分析ダッシュボードで戦略的な活動をサポート</li>
                     </ul>
                     <a href="#" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
                         クリエイターとして登録する
                     </a>
                 </div>
