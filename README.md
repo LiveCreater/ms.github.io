@@ -30,18 +30,15 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
         }
-
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--gray-800);
@@ -50,33 +47,26 @@
             overflow-x: hidden;
             font-size: 16px;
         }
-
         h1, h2, h3, h4 {
             font-weight: 700;
             line-height: 1.3;
             margin-bottom: 1rem;
         }
-
         h1 { font-size: 2.75rem; }
         h2 { font-size: 2.25rem; }
         h3 { font-size: 1.5rem; }
-
         p { margin-bottom: 1.25rem; }
-
         a {
             text-decoration: none;
             color: var(--primary);
             transition: all 0.3s ease;
         }
-
         a:hover { color: var(--primary-dark); }
-
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
-
         /* コンテナ */
         .container {
             width: 100%;
@@ -84,7 +74,6 @@
             padding: 0 20px;
             margin: 0 auto;
         }
-
         /* ボタン */
         .btn {
             display: inline-flex;
@@ -99,58 +88,49 @@
             text-align: center;
             white-space: nowrap;
         }
-
         .btn svg {
             width: 20px;
             height: 20px;
             margin-right: 8px;
         }
-
         .btn-primary {
             background-color: var(--primary);
             color: white;
             box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
         }
-
         .btn-primary:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
             color: white;
         }
-
         .btn-secondary {
             background-color: var(--secondary);
             color: white;
             box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
         }
-
         .btn-secondary:hover {
             background-color: var(--secondary-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
             color: white;
         }
-
         .btn-outline {
             background-color: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
             padding: 10px 22px;
         }
-
         .btn-outline:hover {
             background-color: var(--primary-lighter);
             color: var(--primary-dark);
             border-color: var(--primary-dark);
             transform: translateY(-3px);
         }
-
         .btn-lg {
             padding: 16px 32px;
             font-size: 1.125rem;
         }
-
         /* ヘッダーとナビ */
         header {
             position: fixed;
@@ -163,18 +143,15 @@
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
-
         header.scrolled {
             box-shadow: var(--shadow);
         }
-
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
         }
-
         .logo {
             font-size: 1.75rem;
             font-weight: 700;
@@ -182,27 +159,22 @@
             z-index: 1002;
             position: relative;
         }
-
         .logo span {
             color: var(--secondary);
         }
-
         .nav-links {
             display: flex;
             align-items: center;
             list-style: none;
         }
-
         .nav-links li {
             margin-left: 32px;
         }
-
         .nav-links a {
             color: var(--gray-700);
             font-weight: 500;
             position: relative;
         }
-
         .nav-links a:not(.btn):after {
             content: '';
             position: absolute;
@@ -213,15 +185,12 @@
             background-color: var(--primary);
             transition: width 0.3s ease;
         }
-
         .nav-links a:not(.btn):hover:after {
             width: 100%;
         }
-
         .nav-links a:not(.btn):hover {
             color: var(--primary);
         }
-
         .hamburger {
             display: none;
             cursor: pointer;
@@ -230,7 +199,6 @@
             position: relative;
             z-index: 1002;
         }
-
         .hamburger span {
             display: block;
             position: absolute;
@@ -243,7 +211,6 @@
             transform: rotate(0deg);
             transition: .25s ease-in-out;
         }
-
         .hamburger span:nth-child(1) { top: 0px; }
         .hamburger span:nth-child(2), .hamburger span:nth-child(3) { top: 10px; }
         .hamburger span:nth-child(4) { top: 20px; }
@@ -253,7 +220,6 @@
             width: 0%;
             left: 50%;
         }
-
         .hamburger.active span:nth-child(2) { transform: rotate(45deg); }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg); }
 
@@ -262,7 +228,6 @@
             width: 0%;
             left: 50%;
         }
-
         /* ヒーロー */
         .hero {
             padding: 160px 0 80px;
@@ -272,27 +237,23 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
-
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 40px;
             opacity: 0.9;
         }
-
         .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 48px;
         }
-
         .hero-image {
             max-width: 900px;
             margin: 0 auto;
@@ -300,7 +261,6 @@
             box-shadow: var(--shadow-md);
             overflow: hidden;
         }
-
         .scroll-indicator {
             position: absolute;
             bottom: 20px;
@@ -313,58 +273,48 @@
             animation: bounce 2s infinite;
             opacity: 0.8;
         }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
             40% { transform: translateY(-10px) translateX(-50%); }
             60% { transform: translateY(-5px) translateX(-50%); }
         }
-
         /* セクション */
         .section {
             padding: 80px 0;
         }
-
         .section-light { background-color: var(--light); }
         .section-dark { background-color: var(--gray-100); }
         .section-colored {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
         }
-
         .section-header {
             text-align: center;
             max-width: 800px;
             margin: 0 auto 48px;
         }
-        
         .section-header p {
             color: var(--gray-600);
         }
-        
         .section-colored .section-header p {
             color: rgba(255, 255, 255, 0.9);
         }
-
         /* グリッド */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
-
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
-
         /* カード */
         .feature-card, .testimonial-card, .pricing-card {
             background-color: white;
@@ -374,20 +324,16 @@
             transition: all 0.3s ease;
             height: 100%;
         }
-
         .feature-card:hover, .testimonial-card:hover, .pricing-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-md);
         }
-
         .feature-card {
             border-bottom: 4px solid transparent;
         }
-
         .feature-card:hover {
             border-bottom: 4px solid var(--primary);
         }
-
         .feature-icon {
             width: 70px;
             height: 70px;
@@ -400,34 +346,28 @@
             font-size: 2rem;
             color: white;
         }
-
         /* 2カラム */
         .two-columns {
             display: flex;
             align-items: center;
             gap: 64px;
         }
-
         .column { flex: 1; }
-
         .image-column img {
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             width: 100%;
         }
-
         .bullet-list {
             list-style: none;
             margin-bottom: 32px;
         }
-
         .bullet-list li {
             position: relative;
             padding-left: 32px;
             margin-bottom: 16px;
             transition: transform 0.3s ease;
         }
-
         .bullet-list li:before {
             content: '✓';
             position: absolute;
@@ -443,7 +383,6 @@
             border-radius: 50%;
             background-color: rgba(16, 185, 129, 0.1);
         }
-
         /* 利用者の声 */
         .testimonial-text {
             margin-bottom: 24px;
@@ -451,7 +390,6 @@
             position: relative;
             padding-left: 24px;
         }
-
         .testimonial-text:before {
             content: '"';
             position: absolute;
@@ -462,12 +400,10 @@
             line-height: 1;
             opacity: 0.5;
         }
-
         .testimonial-author {
             display: flex;
             align-items: center;
         }
-
         .author-avatar {
             width: 56px;
             height: 56px;
@@ -477,30 +413,25 @@
             flex-shrink: 0;
             border: 3px solid var(--primary-light);
         }
-
         .author-info h4 {
             margin-bottom: 4px;
         }
-
         .author-info p {
             margin-bottom: 0;
             color: var(--gray-500);
             font-size: 0.875rem;
         }
-
         /* 料金 */
         .pricing-card {
             display: flex;
             flex-direction: column;
         }
-
         .pricing-card.featured {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: white;
             position: relative;
             z-index: 1;
         }
-
         .pricing-card.featured:before {
             content: 'おすすめ';
             position: absolute;
@@ -513,13 +444,11 @@
             font-weight: 700;
             transform: rotate(45deg);
         }
-
         .pricing-type {
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 16px;
         }
-
         .price {
             font-size: 3rem;
             font-weight: 700;
@@ -527,76 +456,62 @@
             margin-bottom: 16px;
             color: var(--primary);
         }
-
         .pricing-card.featured .price { color: white; }
-
         .price-details {
             margin-bottom: 24px;
             color: var(--gray-500);
         }
-
         .pricing-card.featured .price-details {
             color: rgba(255, 255, 255, 0.8);
         }
-
         .pricing-features {
             list-style: none;
             margin-bottom: 32px;
             flex: 1;
         }
-
         .pricing-features li {
             position: relative;
             padding-left: 28px;
             margin-bottom: 12px;
         }
-
         .pricing-features li:before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--success);
         }
-
         .pricing-card.featured .pricing-features li:before { color: white; }
-
         /* CTA */
         .cta {
             text-align: center;
         }
-
         .cta h2 {
             font-size: 3rem;
             margin-bottom: 24px;
         }
-
         .cta p {
             font-size: 1.25rem;
             max-width: 800px;
             margin: 0 auto 40px;
             opacity: 0.9;
         }
-
         /* フッター */
         footer {
             background-color: var(--dark);
             color: var(--gray-300);
             padding: 80px 0 40px;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 48px;
         }
-
         .footer-column h3 {
             color: white;
             margin-bottom: 24px;
             position: relative;
             display: inline-block;
         }
-
         .footer-column h3:after {
             content: '';
             position: absolute;
@@ -606,24 +521,19 @@
             height: 3px;
             background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 16px;
             transition: all 0.3s ease;
         }
-
         .footer-links a {
             color: var(--gray-400);
         }
-
         .footer-links a:hover {
             color: white;
         }
-
         .footer-bottom {
             margin-top: 64px;
             padding-top: 32px;
@@ -634,12 +544,10 @@
             flex-wrap: wrap;
             gap: 24px;
         }
-
         .social-links {
             display: flex;
             gap: 16px;
         }
-
         .social-link {
             display: flex;
             align-items: center;
@@ -651,17 +559,14 @@
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-
         .social-link:hover {
             background-color: var(--primary);
             transform: translateY(-5px);
         }
-
         .copyright {
             color: var(--gray-500);
             font-size: 0.875rem;
         }
-
         /* トップに戻るボタン */
         .back-to-top {
             position: fixed;
@@ -682,67 +587,53 @@
             z-index: 99;
             border: none;
         }
-
         .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
-
         .back-to-top:hover {
             background-color: var(--primary-dark);
             transform: translateY(-5px);
         }
-
         /* レスポンシブ対応 */
         @media (max-width: 1024px) {
             .features-grid, .testimonials-grid, .pricing-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         @media (max-width: 992px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             .hero h1 { font-size: 2.75rem; }
-
             .two-columns {
                 flex-direction: column;
                 gap: 48px;
             }
-            
             .image-column {
                 order: -1;
                 width: 100%;
             }
-            
             .cta h2 { font-size: 2.5rem; }
         }
-
         @media (max-width: 768px) {
             .section { padding: 60px 0; }
             h1 { font-size: 2.25rem; }
             h2 { font-size: 1.75rem; }
-
             .hero {
                 padding: 120px 0 60px;
             }
-
             .hero h1 {
                 font-size: 2.25rem;
             }
-
             .hero p {
                 font-size: 1.125rem;
             }
-
             .features-grid, .testimonials-grid, .pricing-grid {
                 grid-template-columns: 1fr;
             }
-
             .hamburger {
                 display: block;
             }
-            
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -758,88 +649,71 @@
                 box-shadow: var(--shadow-md);
                 z-index: 1001;
             }
-            
             .nav-links.active {
                 right: 0;
             }
-            
             .nav-links li {
                 margin: 16px 0;
                 width: 100%;
                 text-align: center;
             }
-            
             .nav-links .btn {
                 margin: 16px 0 0;
                 width: 100%;
             }
-
             body.menu-open {
                 overflow: hidden;
             }
-
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .footer-bottom {
                 flex-direction: column-reverse;
                 text-align: center;
             }
-
             .social-links {
                 justify-content: center;
                 margin-bottom: 16px;
             }
         }
-
         @media (max-width: 576px) {
             .section { padding: 40px 0; }
             h1 { font-size: 2rem; }
             h2 { font-size: 1.5rem; }
             .hero { padding: 100px 0 50px; }
             .hero h1 { font-size: 1.75rem; }
-            
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
                 gap: 12px;
             }
-
             .btn {
                 width: 100%;
             }
-
             .feature-card, .testimonial-card, .pricing-card {
                 padding: 24px;
             }
-
             .feature-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
             }
-
             .hero-image img {
                 max-height: 250px;
                 object-fit: cover;
             }
-
             .back-to-top {
                 right: 20px;
                 bottom: 20px;
                 width: 40px;
                 height: 40px;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
-
             .cta h2 { font-size: 1.75rem; }
             .cta p { font-size: 1rem; }
-
             .section-header {
                 margin-bottom: 32px;
             }
@@ -859,7 +733,6 @@
                     <span></span>
                     <span></span>
                 </div>
-                
                 <ul class="nav-links">
                     <li><a href="#features">特徴</a></li>
                     <li><a href="#for-creator">クリエイター向け</a></li>
@@ -873,7 +746,6 @@
             </nav>
         </div>
     </header>
-
     <!-- ヒーローセクション -->
     <section class="hero">
         <div class="container">
@@ -900,7 +772,6 @@
             </div>
         </div>
     </section>
-
     <!-- 利用者の声 -->
     <section class="section section-light">
         <div class="container">
@@ -954,27 +825,22 @@
             </div>
         </div>
     </section>
-
     <!-- Back to top button -->
     <button class="back-to-top" id="backToTop" aria-label="トップに戻る">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </button>
-
     <script>
         // モバイルメニュー
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-        
         hamburger.addEventListener('click', function() {
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
             document.body.classList.toggle('menu-open');
-            
             // アクセシビリティ対応
             const expanded = this.getAttribute('aria-expanded') === 'true' || false;
             this.setAttribute('aria-expanded', !expanded);
         });
-        
         // ナビゲーションリンクをクリックしたらメニューを閉じる
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -984,11 +850,9 @@
                 hamburger.setAttribute('aria-expanded', 'false');
             });
         });
-        
         // スクロール時のヘッダースタイル変更とトップに戻るボタン表示
         const header = document.querySelector('header');
         const backToTop = document.getElementById('backToTop');
-        
         window.addEventListener('scroll', function() {
             // ヘッダースタイル
             if (window.scrollY > 50) {
@@ -996,7 +860,6 @@
             } else {
                 header.classList.remove('scrolled');
             }
-            
             // トップに戻るボタン
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
@@ -1004,7 +867,6 @@
                 backToTop.classList.remove('visible');
             }
         });
-        
         // トップに戻るボタン機能
         backToTop.addEventListener('click', function() {
             window.scrollTo({
@@ -1012,20 +874,16 @@
                 behavior: 'smooth'
             });
         });
-        
         // スムーススクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
+                e.preventDefault(); 
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -1033,7 +891,6 @@
                 }
             });
         });
-
         // レスポンシブ対応：ウィンドウサイズ変更時のメニュー調整
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
@@ -1046,7 +903,6 @@
     </script>
 </body>
 </html>
-
     <!-- 料金 -->
     <section id="pricing" class="section section-dark">
         <div class="container">
@@ -1097,7 +953,6 @@
             </div>
         </div>
     </section>
-
     <!-- ファン向け -->
     <section id="for-fan" class="section section-light">
         <div class="container">
@@ -1123,7 +978,6 @@
             </div>
         </div>
     </section>
-
     <!-- クリエイター向け -->
     <section id="for-creator" class="section section-dark">
         <div class="container">
@@ -1149,7 +1003,6 @@
             </div>
         </div>
     </section>
-
     <!-- 特徴 -->
     <section id="features" class="section section-light">
         <div class="container">
@@ -1191,7 +1044,6 @@
             </div>
         </div>
     </section>
-
     <!-- CTA -->
     <section class="section section-colored cta">
         <div class="container">
@@ -1203,7 +1055,6 @@
             </a>
         </div>
     </section>
-
     <!-- フッター -->
     <footer>
         <div class="container">
