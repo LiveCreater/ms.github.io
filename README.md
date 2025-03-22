@@ -2,12 +2,13 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveCreate - クリエイターとファンを繋ぐ体験プラットフォーム</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 変数定義 */
+        /* 基本スタイル */
         :root {
             --primary: #6366F1;
             --primary-dark: #4F46E5;
@@ -32,7 +33,6 @@
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* リセットとベース */
         * {
             margin: 0;
             padding: 0;
@@ -50,7 +50,7 @@
             background-color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+            font-size: 16px;
         }
 
         h1, h2, h3, h4 {
@@ -59,9 +59,9 @@
             margin-bottom: 1rem;
         }
 
-        h1 { font-size: clamp(1.75rem, 1.5rem + 2vw, 2.75rem); }
-        h2 { font-size: clamp(1.5rem, 1.25rem + 1.5vw, 2.25rem); }
-        h3 { font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem); }
+        h1 { font-size: 2.75rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.5rem; }
 
         p { margin-bottom: 1.25rem; }
 
@@ -92,17 +92,19 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) clamp(1rem, 0.75rem + 1vw, 1.5rem);
+            padding: 12px 24px;
             font-weight: 600;
             border: none;
             border-radius: var(--border-radius);
             transition: all 0.3s ease;
             cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .btn svg {
-            width: 1.25em;
-            height: 1.25em;
+            width: 20px;
+            height: 20px;
             margin-right: 8px;
         }
 
@@ -136,10 +138,7 @@
             background-color: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
-            padding-top: calc(clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) - 2px);
-            padding-bottom: calc(clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem) - 2px);
-            padding-left: calc(clamp(1rem, 0.75rem + 1vw, 1.5rem) - 2px);
-            padding-right: calc(clamp(1rem, 0.75rem + 1vw, 1.5rem) - 2px);
+            padding: 10px 22px;
         }
 
         .btn-outline:hover {
@@ -150,8 +149,8 @@
         }
 
         .btn-lg {
-            padding: clamp(0.75rem, 0.6rem + 0.75vw, 1rem) clamp(1.25rem, 1rem + 1.25vw, 2rem);
-            font-size: clamp(0.9375rem, 0.875rem + 0.3125vw, 1.125rem);
+            padding: 16px 32px;
+            font-size: 1.125rem;
         }
 
         /* ヘッダーとナビ */
@@ -175,11 +174,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: clamp(12px, 3vw, 20px) 0;
+            padding: 16px 0;
         }
 
         .logo {
-            font-size: clamp(1.5rem, 1.25rem + 1.25vw, 1.75rem);
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--primary);
             z-index: 1002;
@@ -197,7 +196,7 @@
         }
 
         .nav-links li {
-            margin-left: clamp(16px, 4vw, 32px);
+            margin-left: 32px;
         }
 
         .nav-links a {
@@ -268,11 +267,12 @@
 
         /* ヒーロー */
         .hero {
-            padding: clamp(120px, 30vw, 180px) 0 clamp(60px, 10vw, 100px);
+            padding: 160px 0 80px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
@@ -283,16 +283,16 @@
         }
 
         .hero p {
-            font-size: clamp(1rem, 0.875rem + 0.625vw, 1.25rem);
-            margin-bottom: clamp(24px, 8vw, 40px);
+            font-size: 1.25rem;
+            margin-bottom: 40px;
             opacity: 0.9;
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: clamp(10px, 3vw, 20px);
-            margin-bottom: clamp(32px, 10vw, 48px);
+            gap: 20px;
+            margin-bottom: 48px;
         }
 
         .hero-image {
@@ -317,14 +317,14 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
         }
 
         /* セクション */
         .section {
-            padding: clamp(40px, 10vw, 80px) 0;
+            padding: 80px 0;
         }
 
         .section-light { background-color: var(--light); }
@@ -337,27 +337,41 @@
         .section-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto clamp(32px, 10vw, 48px);
+            margin: 0 auto 48px;
+        }
+        
+        .section-header p {
+            color: var(--gray-600);
+        }
+        
+        .section-colored .section-header p {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* グリッド */
-        .features-grid, .testimonials-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-            gap: clamp(20px, 5vw, 32px);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-            gap: clamp(20px, 5vw, 32px);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
         /* カード */
         .feature-card, .testimonial-card, .pricing-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: clamp(20px, 5vw, 32px);
+            padding: 32px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             height: 100%;
@@ -377,15 +391,15 @@
         }
 
         .feature-icon {
-            width: clamp(60px, 15vw, 80px);
-            height: clamp(60px, 15vw, 80px);
+            width: 70px;
+            height: 70px;
             border-radius: 20px;
             background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: clamp(16px, 4vw, 24px);
-            font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+            margin-bottom: 24px;
+            font-size: 2rem;
             color: white;
         }
 
@@ -393,7 +407,7 @@
         .two-columns {
             display: flex;
             align-items: center;
-            gap: clamp(32px, 8vw, 64px);
+            gap: 64px;
         }
 
         .column { flex: 1; }
@@ -406,7 +420,7 @@
 
         .bullet-list {
             list-style: none;
-            margin-bottom: clamp(24px, 8vw, 32px);
+            margin-bottom: 32px;
         }
 
         .bullet-list li {
@@ -466,6 +480,16 @@
             border: 3px solid var(--primary-light);
         }
 
+        .author-info h4 {
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
         /* 料金 */
         .pricing-card {
             display: flex;
@@ -492,8 +516,14 @@
             transform: rotate(45deg);
         }
 
+        .pricing-type {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
         .price {
-            font-size: clamp(2.5rem, 2rem + 2.5vw, 3rem);
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1;
             margin-bottom: 16px;
@@ -501,6 +531,15 @@
         }
 
         .pricing-card.featured .price { color: white; }
+
+        .price-details {
+            margin-bottom: 24px;
+            color: var(--gray-500);
+        }
+
+        .pricing-card.featured .price-details {
+            color: rgba(255, 255, 255, 0.8);
+        }
 
         .pricing-features {
             list-style: none;
@@ -529,14 +568,14 @@
         }
 
         .cta h2 {
-            font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-            margin-bottom: clamp(16px, 4vw, 24px);
+            font-size: 3rem;
+            margin-bottom: 24px;
         }
 
         .cta p {
-            font-size: clamp(1rem, 0.875rem + 0.625vw, 1.25rem);
+            font-size: 1.25rem;
             max-width: 800px;
-            margin: 0 auto clamp(24px, 8vw, 40px);
+            margin: 0 auto 40px;
             opacity: 0.9;
         }
 
@@ -544,13 +583,13 @@
         footer {
             background-color: var(--dark);
             color: var(--gray-300);
-            padding: clamp(60px, 15vw, 80px) 0 clamp(30px, 7.5vw, 40px);
+            padding: 80px 0 40px;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: clamp(32px, 8vw, 48px);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
         }
 
         .footer-column h3 {
@@ -588,14 +627,14 @@
         }
 
         .footer-bottom {
-            margin-top: clamp(40px, 10vw, 64px);
-            padding-top: clamp(20px, 5vw, 32px);
+            margin-top: 64px;
+            padding-top: 32px;
             border-top: 1px solid var(--gray-700);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: clamp(16px, 4vw, 24px);
+            gap: 24px;
         }
 
         .social-links {
@@ -618,6 +657,11 @@
         .social-link:hover {
             background-color: var(--primary);
             transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--gray-500);
+            font-size: 0.875rem;
         }
 
         /* トップに戻るボタン */
@@ -652,19 +696,51 @@
         }
 
         /* レスポンシブ対応 */
+        @media (max-width: 1024px) {
+            .features-grid, .testimonials-grid, .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.75rem; }
+
             .two-columns {
                 flex-direction: column;
-                gap: 32px;
+                gap: 48px;
             }
             
             .image-column {
                 order: -1;
                 width: 100%;
             }
+            
+            .cta h2 { font-size: 2.5rem; }
         }
 
         @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .features-grid, .testimonials-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
             .hamburger {
                 display: block;
             }
@@ -704,6 +780,10 @@
                 overflow: hidden;
             }
 
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .footer-bottom {
                 flex-direction: column-reverse;
                 text-align: center;
@@ -716,13 +796,30 @@
         }
 
         @media (max-width: 576px) {
-            .btn {
-                width: 100%;
-            }
+            .section { padding: 40px 0; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .hero { padding: 100px 0 50px; }
+            .hero h1 { font-size: 1.75rem; }
             
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .feature-card, .testimonial-card, .pricing-card {
+                padding: 24px;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
 
             .hero-image img {
@@ -736,10 +833,23 @@
                 width: 40px;
                 height: 40px;
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .cta h2 { font-size: 1.75rem; }
+            .cta p { font-size: 1rem; }
+
+            .section-header {
+                margin-bottom: 32px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- ヘッダー -->
     <header>
         <div class="container">
             <nav class="navbar">
@@ -766,6 +876,7 @@
         </div>
     </header>
 
+    <!-- ヒーローセクション -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -792,57 +903,59 @@
         </div>
     </section>
 
-    <footer>
+    <!-- 利用者の声 -->
+    <section class="section section-light">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>LiveCreate</h3>
-                    <p>創造の価値を正当に還元し、クリエイターとファンの心をつなぐプラットフォーム</p>
-                </div>
-                <div class="footer-column">
-                    <h3>サービス</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">イベント機能</a></li>
-                        <li><a href="#">サブスクリプション</a></li>
-                        <li><a href="#">グッズ販売</a></li>
-                        <li><a href="#">コミュニティ機能</a></li>
-                        <li><a href="#">分析ツール</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>会社情報</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">ミッション</a></li>
-                        <li><a href="#">チーム紹介</a></li>
-                        <li><a href="#">採用情報</a></li>
-                        <li><a href="#">プレスリリース</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>サポート</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">ヘルプセンター</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">特定商取引法に基づく表記</a></li>
-                        <li><a href="#">よくある質問</a></li>
-                    </ul>
-                </div>
+            <div class="section-header">
+                <h2>利用者の声</h2>
+                <p>LiveCreateを通じて、クリエイターとファンがどのような体験をしているか、実際の声をご紹介します。</p>
             </div>
-            <div class="footer-bottom">
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">X</a>
-                    <a href="#" class="social-link" aria-label="Instagram">IG</a>
-                    <a href="#" class="social-link" aria-label="Facebook">FB</a>
-                    <a href="#" class="social-link" aria-label="YouTube">YT</a>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        LiveCreateのおかげで、ファンと直接つながる喜びを感じながら、安定した収入を得られるようになりました。毎月のサブスクリプション収入があるので、創作に専念できる時間が増えました。
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/56/56" alt="佐藤音楽家">
+                        </div>
+                        <div class="author-info">
+                            <h4>佐藤 明</h4>
+                            <p>インディーミュージシャン</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="copyright">
-                    &copy; 2025 LiveCreate. All rights reserved.
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        ファンからの直接的なサポートとフィードバックが、創作意欲を大きく高めてくれます。月に一度のオンラインライブが楽しみで仕方ありません。ファンとの距離が近くなったと感じます。
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/56/56" alt="田中イラストレーター">
+                        </div>
+                        <div class="author-info">
+                            <h4>田中 彩</h4>
+                            <p>イラストレーター</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        推しのライブ配信に参加して、直接質問できるのが最高です！他のSNSでは見られない限定コンテンツも楽しめて、もっと応援したいという気持ちが強くなりました。
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/56/56" alt="山田ファン">
+                        </div>
+                        <div class="author-info">
+                            <h4>山田 健太</h4>
+                            <p>熱心なファン</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
     <!-- Back to top button -->
     <button class="back-to-top" id="backToTop" aria-label="トップに戻る">
@@ -936,7 +1049,8 @@
 </body>
 </html>
 
-    <section id="pricing" class="section section-light">
+    <!-- 料金 -->
+    <section id="pricing" class="section section-dark">
         <div class="container">
             <div class="section-header">
                 <h2>シンプルで透明な料金体系</h2>
@@ -986,17 +1100,7 @@
         </div>
     </section>
 
-    <section class="section section-colored cta">
-        <div class="container">
-            <h2>クリエイターとファンの新しい関係を始めよう</h2>
-            <p>LiveCreateで、創作の価値が正当に評価され、ファンとの心の繋がりを深める体験をはじめませんか？</p>
-            <a href="#" class="btn btn-secondary btn-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                今すぐ無料登録
-            </a>
-        </div>
-    </section>
-
+    <!-- ファン向け -->
     <section id="for-fan" class="section section-light">
         <div class="container">
             <div class="two-columns">
@@ -1022,59 +1126,33 @@
         </div>
     </section>
 
-    <section class="section section-dark">
+    <!-- クリエイター向け -->
+    <section id="for-creator" class="section section-dark">
         <div class="container">
-            <div class="section-header">
-                <h2>利用者の声</h2>
-                <p>LiveCreateを通じて、クリエイターとファンがどのような体験をしているか、実際の声をご紹介します。</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        LiveCreateのおかげで、ファンと直接つながる喜びを感じながら、安定した収入を得られるようになりました。毎月のサブスクリプション収入があるので、創作に専念できる時間が増えました。
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/api/placeholder/56/56" alt="佐藤音楽家">
-                        </div>
-                        <div class="author-info">
-                            <h4>佐藤 明</h4>
-                            <p>インディーミュージシャン</p>
-                        </div>
-                    </div>
+            <div class="two-columns">
+                <div class="column text-column">
+                    <h2>クリエイターの可能性を広げる</h2>
+                    <p>LiveCreateは、あなたの創作活動を支え、ファンとの関係を深め、持続可能な収入を得るための総合プラットフォームです。</p>
+                    <ul class="bullet-list">
+                        <li>イベント作成・チケット販売機能で、ライブ配信やワークショップを簡単に収益化</li>
+                        <li>月額制ファンクラブで、限定コンテンツを提供し安定的な継続収入を確保</li>
+                        <li>オリジナルグッズや作品のオンラインショップを簡単に開設</li>
+                        <li>ファンとのダイレクトコミュニケーションで関係性を強化</li>
+                        <li>収益レポートやファン分析ダッシュボードで戦略的な活動をサポート</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+                        クリエイターとして登録する
+                    </a>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        ファンからの直接的なサポートとフィードバックが、創作意欲を大きく高めてくれます。月に一度のオンラインライブが楽しみで仕方ありません。ファンとの距離が近くなったと感じます。
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/api/placeholder/56/56" alt="田中イラストレーター">
-                        </div>
-                        <div class="author-info">
-                            <h4>田中 彩</h4>
-                            <p>イラストレーター</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        推しのライブ配信に参加して、直接質問できるのが最高です！他のSNSでは見られない限定コンテンツも楽しめて、もっと応援したいという気持ちが強くなりました。
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/api/placeholder/56/56" alt="山田ファン">
-                        </div>
-                        <div class="author-info">
-                            <h4>山田 健太</h4>
-                            <p>熱心なファン</p>
-                        </div>
-                    </div>
+                <div class="column image-column">
+                    <img src="/api/placeholder/600/400" alt="クリエイター向け機能イメージ">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 特徴 -->
     <section id="features" class="section section-light">
         <div class="container">
             <div class="section-header">
@@ -1116,27 +1194,67 @@
         </div>
     </section>
 
-    <section id="for-creator" class="section section-dark">
+    <!-- CTA -->
+    <section class="section section-colored cta">
         <div class="container">
-            <div class="two-columns">
-                <div class="column text-column">
-                    <h2>クリエイターの可能性を広げる</h2>
-                    <p>LiveCreateは、あなたの創作活動を支え、ファンとの関係を深め、持続可能な収入を得るための総合プラットフォームです。</p>
-                    <ul class="bullet-list">
-                        <li>イベント作成・チケット販売機能で、ライブ配信やワークショップを簡単に収益化</li>
-                        <li>月額制ファンクラブで、限定コンテンツを提供し安定的な継続収入を確保</li>
-                        <li>オリジナルグッズや作品のオンラインショップを簡単に開設</li>
-                        <li>ファンとのダイレクトコミュニケーションで関係性を強化</li>
-                        <li>収益レポートやファン分析ダッシュボードで戦略的な活動をサポート</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
-                        クリエイターとして登録する
-                    </a>
+            <h2>クリエイターとファンの新しい関係を始めよう</h2>
+            <p>LiveCreateで、創作の価値が正当に評価され、ファンとの心の繋がりを深める体験をはじめませんか？</p>
+            <a href="#" class="btn btn-secondary btn-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                今すぐ無料登録
+            </a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>LiveCreate</h3>
+                    <p>創造の価値を正当に還元し、クリエイターとファンの心をつなぐプラットフォーム</p>
                 </div>
-                <div class="column image-column">
-                    <img src="/api/placeholder/600/400" alt="クリエイター向け機能イメージ">
+                <div class="footer-column">
+                    <h3>サービス</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">イベント機能</a></li>
+                        <li><a href="#">サブスクリプション</a></li>
+                        <li><a href="#">グッズ販売</a></li>
+                        <li><a href="#">コミュニティ機能</a></li>
+                        <li><a href="#">分析ツール</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>会社情報</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ミッション</a></li>
+                        <li><a href="#">チーム紹介</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プレスリリース</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>サポート</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ヘルプセンター</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">特定商取引法に基づく表記</a></li>
+                        <li><a href="#">よくある質問</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Twitter">X</a>
+                    <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                    <a href="#" class="social-link" aria-label="Facebook">FB</a>
+                    <a href="#" class="social-link" aria-label="YouTube">YT</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 LiveCreate. All rights reserved.
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
